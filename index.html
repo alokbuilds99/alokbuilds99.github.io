@@ -1,319 +1,35 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="The Alok Perspective — Exploring technology, semiconductors, business, markets and ideas.">
-<title>The Alok Perspective | Ideas Worth Exploring</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home | Alok Builds</title>
+<meta name="description" content="Alok Builds — notes on chip design, technology, business and engineering.">
+<meta name="theme-color" content="#0b1020">
 <style>
-:root {
-  --bg:#f8f7f4;
-  --paper:#ffffff;
-  --ink:#191b20;
-  --muted:#777a82;
-  --line:#e7e5df;
-  --accent:#a34f35;
-}
-* {box-sizing:border-box}
-html {scroll-behavior:smooth}
-body {
-  margin:0;
-  background:var(--bg);
-  color:var(--ink);
-  font-family:'DM Sans',sans-serif;
-}
-a {color:inherit;text-decoration:none}
-button {font:inherit;cursor:pointer}
-.container {max-width:1160px;margin:auto;padding:0 28px}
-header {
-  background:var(--bg);
-  border-bottom:1px solid var(--line);
-  position:sticky;top:0;z-index:10;
-}
-.nav {
-  height:76px;display:flex;align-items:center;
-  justify-content:space-between;gap:20px;
-}
-.brand {font-weight:800;font-size:20px;letter-spacing:-1px}
-.brand span {color:var(--accent)}
-.navlinks {display:flex;gap:27px;font-size:13px;color:var(--muted)}
-.navlinks a:hover {color:var(--accent)}
-.navright {display:flex;gap:15px;align-items:center}
-.iconbtn {
-  border:1px solid var(--line);background:transparent;
-  padding:9px 12px;border-radius:50%;color:var(--ink);
-}
-.hero {padding:85px 0 65px}
-.eyebrow {
-  text-transform:uppercase;letter-spacing:2.5px;
-  font-size:11px;font-weight:700;color:var(--accent);
-}
-.hero h1 {
-  font-family:'Playfair Display',serif;
-  font-size:clamp(48px,7vw,86px);
-  line-height:1.08;letter-spacing:-3px;
-  font-weight:500;max-width:850px;margin:24px 0;
-}
-.hero h1 em {color:var(--accent);font-weight:500}
-.hero p {font-size:17px;line-height:1.8;color:var(--muted);max-width:610px}
-.hero-actions {display:flex;gap:13px;margin-top:28px;flex-wrap:wrap}
-.btn {
-  padding:13px 20px;border:1px solid var(--ink);
-  display:inline-block;font-size:13px;font-weight:600;
-}
-.btn.primary {background:var(--ink);color:white}
-.btn:hover {opacity:.75}
-.hero-image {
-  margin-top:55px;width:100%;height:340px;
-  object-fit:cover;display:block;
-  filter:saturate(.8);
-}
-.section {padding:65px 0;border-top:1px solid var(--line)}
-.section-head {
-  display:flex;justify-content:space-between;
-  align-items:end;margin-bottom:30px;gap:15px;
-}
-.section-head h2 {
-  font-family:'Playfair Display',serif;
-  font-size:37px;font-weight:500;margin:10px 0 0;
-}
-.small {font-size:12px;color:var(--muted)}
-.categories {
-  display:grid;grid-template-columns:repeat(4,1fr);
-  border:1px solid var(--line);
-}
-.category {
-  padding:25px 20px;border-right:1px solid var(--line);
-  transition:.2s;
-}
-.category:last-child {border:0}
-.category:hover {background:var(--paper)}
-.category .number {font-size:11px;color:var(--accent)}
-.category h3 {font-size:16px;margin:17px 0 8px}
-.category p {font-size:12px;line-height:1.7;color:var(--muted);margin:0}
-.articles {
-  display:grid;grid-template-columns:repeat(3,1fr);gap:25px;
-}
-.article {background:var(--paper);border:1px solid var(--line)}
-.article img {width:100%;height:190px;object-fit:cover;display:block}
-.article-content {padding:21px}
-.tag {
-  color:var(--accent);font-size:10px;
-  text-transform:uppercase;letter-spacing:1.4px;font-weight:700;
-}
-.article h3 {
-  font-family:'Playfair Display',serif;
-  font-size:23px;line-height:1.35;font-weight:500;
-  margin:13px 0;
-}
-.article p {font-size:13px;line-height:1.8;color:var(--muted)}
-.article-foot {
-  display:flex;justify-content:space-between;
-  font-size:11px;color:var(--muted);margin-top:20px;
-}
-.about {
-  background:#20232a;color:#fff;padding:65px 55px;
-  display:grid;grid-template-columns:1.3fr 1fr;gap:40px;
-}
-.about h2 {
-  font-family:'Playfair Display',serif;
-  font-size:42px;font-weight:500;line-height:1.25;
-}
-.about p {color:#b9bbc2;line-height:1.9;font-size:14px}
-.about .eyebrow {color:#d99578}
-footer {padding:35px 0;color:var(--muted);font-size:12px}
-.footer-inner {display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.search {
-  padding:12px 15px;border:1px solid var(--line);
-  background:var(--paper);width:100%;max-width:300px;
-}
-.empty {color:var(--muted);padding:30px 0;display:none}
-body.dark {
-  --bg:#15171b;--paper:#202329;--ink:#f0eee9;
-  --muted:#a2a4aa;--line:#33363d;
-}
-body.dark header {background:var(--bg)}
-body.dark .about {background:#0d0e11}
-@media(max-width:760px) {
-  .navlinks {display:none}
-  .hero {padding:60px 0 40px}
-  .hero-image {height:220px}
-  .categories {grid-template-columns:repeat(2,1fr)}
-  .category:nth-child(2) {border-right:0}
-  .category:nth-child(-n+2) {border-bottom:1px solid var(--line)}
-  .articles {grid-template-columns:1fr}
-  .about {grid-template-columns:1fr;padding:35px 25px}
-  .about h2 {font-size:34px}
-  .section-head {align-items:start;flex-direction:column}
-}
+:root{--bg:#0b1020;--panel:#121a2e;--panel2:#18233b;--text:#edf2ff;--muted:#aab6d3;--accent:#67e8f9;--accent2:#a78bfa;--line:#293653;--green:#86efac}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#17264a 0,transparent 42%),var(--bg);color:var(--text);font:16px/1.7 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.wrap{max-width:1080px;margin:auto;padding:0 22px}
+header{padding:24px 0;border-bottom:1px solid var(--line)}.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:.3px;color:white}.navlinks{display:flex;gap:18px;flex-wrap:wrap;font-size:.92rem;color:var(--muted)}
+.hero{padding:76px 0 52px}.eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:2px;font-size:.78rem;font-weight:800}.hero h1{font-size:clamp(2.5rem,6vw,4.8rem);line-height:1.04;letter-spacing:-.045em;margin:14px 0 20px;max-width:900px}.lead{font-size:1.18rem;color:var(--muted);max-width:790px}
+.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}.pill{border:1px solid var(--line);border-radius:99px;padding:5px 12px;color:var(--muted);font-size:.82rem}
+main{padding:20px 0 80px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card,.section{background:linear-gradient(145deg,var(--panel),#10182a);border:1px solid var(--line);border-radius:18px;padding:24px;margin:16px 0}.card h3{margin-top:0}.section h2{font-size:1.8rem;letter-spacing:-.025em;margin:0 0 16px}.section h3{font-size:1.2rem;margin:24px 0 8px}.muted{color:var(--muted)}.tag{display:inline-block;background:#19334a;color:var(--accent);padding:3px 9px;border-radius:6px;font-size:.76rem;font-weight:700}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.94rem}th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--accent);font-weight:700}
+.diagram{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:24px 0}.node{background:var(--panel2);border:1px solid #3a4c70;border-radius:12px;padding:14px 18px;text-align:center;min-width:130px}.arrow{color:var(--accent);font-size:1.4rem}
+.callout{border-left:3px solid var(--accent);padding:14px 18px;background:#10243a;border-radius:0 12px 12px 0;color:#dceaff;margin:20px 0}
+ul,ol{padding-left:22px}li{margin:7px 0}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}.project{border:1px solid var(--line);border-radius:12px;padding:16px;background:#10182a}.project strong{display:block;color:white;margin-bottom:4px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.9rem}
+@media(max-width:720px){.grid,.two-col{grid-template-columns:1fr}.hero{padding:52px 0 34px}.section,.card{padding:19px}table{display:block;overflow-x:auto;white-space:nowrap}}
 </style>
 </head>
-
 <body>
+<header><div class="wrap nav"><a class="brand" href="index.html">ALOK BUILDS<span style="color:var(--accent)">.</span></a>
+<nav class="navlinks"><a href="fpga-hardware.html">FPGA & Hardware</a><a href="ai-hft-hardware.html">AI & HFT Silicon</a><a href="https://alokbuilds99.github.io/">Home</a></nav></div></header>
 
-<header>
-<div class="container nav">
-  <a class="brand" href="#">THE ALOK<span>.</span></a>
-  <nav class="navlinks">
-    <a href="#home">Home</a>
-    <a href="#explore">Explore</a>
-    <a href="#articles">Articles</a>
-    <a href="#about">About</a>
-  </nav>
-  <div class="navright">
-    <button class="iconbtn" onclick="toggleTheme()" aria-label="Toggle theme">◐</button>
-  </div>
-</div>
-</header>
+<section class="wrap hero"><div class="eyebrow">Alok Builds · Engineering Notes</div><h1>Explore the hardware behind technology.</h1><p class="lead">Notes and explainers on chip design, digital hardware, AI infrastructure, business and engineering.</p></section>
+<main class="wrap"><section class="section"><h2>Featured articles</h2><div class="grid">
+<a class="card" href="fpga-hardware.html"><span class="tag">FPGA · Digital Design</span><h3>What Can You Actually Build With an FPGA?</h3><p class="muted">Explore configurable hardware, memory controllers, processors, networking and project ideas.</p><strong>Read article →</strong></a>
+<a class="card" href="ai-hft-hardware.html"><span class="tag">AI · HFT · VLSI</span><h3>The Hardware Behind AI and High-Frequency Trading</h3><p class="muted">Understand GPUs, HBM, FPGAs, SmartNICs, SRAM and the engineering behind specialized silicon.</p><strong>Read article →</strong></a>
+</div></section></main>
 
-<main>
-<section class="container hero" id="home">
-  <div class="eyebrow">An independent knowledge journal · Est. 2026</div>
-  <h1>Curiosity is a <em>competitive advantage.</em></h1>
-  <p>
-    Exploring the technologies, businesses and ideas shaping our world.
-    Breaking down complex subjects into perspectives worth understanding.
-  </p>
-  <div class="hero-actions">
-    <a class="btn primary" href="#articles">Explore the journal ↗</a>
-    <a class="btn" href="#about">A little about me</a>
-  </div>
-  <img class="hero-image"
-  src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1800&q=85"
-  alt="Semiconductor circuit board">
-</section>
-
-<section class="container section" id="explore">
-  <div class="section-head">
-    <div>
-      <div class="eyebrow">The knowledge map</div>
-      <h2>Explore ideas.</h2>
-    </div>
-    <span class="small">Four fields. Endless possibilities.</span>
-  </div>
-
-  <div class="categories">
-    <a class="category" href="#articles">
-      <span class="number">01 / ENGINEERING</span>
-      <h3>Semiconductors</h3>
-      <p>VLSI, chip architecture, fabrication and the future of computing.</p>
-    </a>
-    <a class="category" href="#articles">
-      <span class="number">02 / STRATEGY</span>
-      <h3>Business</h3>
-      <p>Entrepreneurship, management, companies and business models.</p>
-    </a>
-    <a class="category" href="#articles">
-      <span class="number">03 / ECONOMY</span>
-      <h3>Markets</h3>
-      <p>Economics, finance, industries and global developments.</p>
-    </a>
-    <a class="category" href="#articles">
-      <span class="number">04 / KNOWLEDGE</span>
-      <h3>Explainers</h3>
-      <p>Complex ideas explained simply, with context and clarity.</p>
-    </a>
-  </div>
-</section>
-
-<section class="container section" id="articles">
-  <div class="section-head">
-    <div>
-      <div class="eyebrow">The reading room</div>
-      <h2>Ideas worth exploring.</h2>
-    </div>
-    <input class="search" id="search" type="search"
-      placeholder="Search articles..." oninput="filterArticles()">
-  </div>
-
-  <div class="articles" id="articleGrid">
-
-    <article class="article" data-search="semiconductor chip design vlsi engineering">
-      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800" alt="Circuit board">
-      <div class="article-content">
-        <div class="tag">Semiconductors</div>
-        <h3>Inside the World of Chip Design</h3>
-        <p>How billions of transistors come together to create the processors powering modern technology.</p>
-        <div class="article-foot"><span>Coming soon</span><span>01</span></div>
-      </div>
-    </article>
-
-    <article class="article" data-search="business strategy entrepreneurship management">
-      <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800" alt="Modern workspace">
-      <div class="article-content">
-        <div class="tag">Business & Strategy</div>
-        <h3>How Businesses Build Competitive Advantage</h3>
-        <p>Understanding the decisions, systems and strategies that help businesses grow.</p>
-        <div class="article-foot"><span>Coming soon</span><span>02</span></div>
-      </div>
-    </article>
-
-    <article class="article" data-search="technology artificial intelligence computing future">
-      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800" alt="Earth and technology">
-      <div class="article-content">
-        <div class="tag">Technology</div>
-        <h3>Understanding the Technology Shaping Tomorrow</h3>
-        <p>A closer look at the innovations changing industries and the way we live.</p>
-        <div class="article-foot"><span>Coming soon</span><span>03</span></div>
-      </div>
-    </article>
-
-  </div>
-  <div class="empty" id="empty">No matching articles found.</div>
-</section>
-
-<section class="container section" id="about">
-  <div class="about">
-    <div>
-      <div class="eyebrow">Behind the publication</div>
-      <h2>Learning never goes out of style.</h2>
-    </div>
-    <div>
-      <p>
-        I'm Alok Mishra — an electronics and communication engineering
-        student interested in semiconductors, technology, business and
-        the ideas connecting them.
-      </p>
-      <p>
-        This journal is my space to research, understand, question
-        and share. Not just what I know, but what I'm learning along
-        the way.
-      </p>
-      <p><strong>Think deeply. Stay curious. Keep building.</strong></p>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-<div class="container footer-inner">
-  <span>© 2026 The Alok Perspective. All rights reserved.</span>
-  <span>Built with curiosity. Published with purpose.</span>
-</div>
-</footer>
-
-<script>
-function toggleTheme() {
-  document.body.classList.toggle('dark');
-}
-function filterArticles() {
-  const query = document.getElementById('search').value.toLowerCase();
-  const cards = document.querySelectorAll('.article');
-  let count = 0;
-  cards.forEach(card => {
-    const match = (card.innerText + ' ' + card.dataset.search)
-      .toLowerCase().includes(query);
-    card.style.display = match ? '' : 'none';
-    if(match) count++;
-  });
-  document.getElementById('empty').style.display =
-    count ? 'none' : 'block';
-}
-</script>
-</body>
-</html>
-
+<footer><div class="wrap">© Alok Builds · Notes on chip design, technology, business and engineering.</div></footer>
+</body></html>

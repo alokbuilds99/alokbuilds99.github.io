@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Hardware Behind AI and HFT | Alok Builds</title>
+<meta name="description" content="Explore the processors, memory, networking and FPGA hardware used in AI systems and high-frequency trading.">
+<meta name="theme-color" content="#0b1020">
+<style>
+:root{--bg:#0b1020;--panel:#121a2e;--panel2:#18233b;--text:#edf2ff;--muted:#aab6d3;--accent:#67e8f9;--accent2:#a78bfa;--line:#293653;--green:#86efac}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#17264a 0,transparent 42%),var(--bg);color:var(--text);font:16px/1.7 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.wrap{max-width:1080px;margin:auto;padding:0 22px}
+header{padding:24px 0;border-bottom:1px solid var(--line)}.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}.brand{font-weight:800;letter-spacing:.3px;color:white}.navlinks{display:flex;gap:18px;flex-wrap:wrap;font-size:.92rem;color:var(--muted)}
+.hero{padding:76px 0 52px}.eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:2px;font-size:.78rem;font-weight:800}.hero h1{font-size:clamp(2.5rem,6vw,4.8rem);line-height:1.04;letter-spacing:-.045em;margin:14px 0 20px;max-width:900px}.lead{font-size:1.18rem;color:var(--muted);max-width:790px}
+.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}.pill{border:1px solid var(--line);border-radius:99px;padding:5px 12px;color:var(--muted);font-size:.82rem}
+main{padding:20px 0 80px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card,.section{background:linear-gradient(145deg,var(--panel),#10182a);border:1px solid var(--line);border-radius:18px;padding:24px;margin:16px 0}.card h3{margin-top:0}.section h2{font-size:1.8rem;letter-spacing:-.025em;margin:0 0 16px}.section h3{font-size:1.2rem;margin:24px 0 8px}.muted{color:var(--muted)}.tag{display:inline-block;background:#19334a;color:var(--accent);padding:3px 9px;border-radius:6px;font-size:.76rem;font-weight:700}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.94rem}th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--accent);font-weight:700}
+.diagram{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:24px 0}.node{background:var(--panel2);border:1px solid #3a4c70;border-radius:12px;padding:14px 18px;text-align:center;min-width:130px}.arrow{color:var(--accent);font-size:1.4rem}
+.callout{border-left:3px solid var(--accent);padding:14px 18px;background:#10243a;border-radius:0 12px 12px 0;color:#dceaff;margin:20px 0}
+ul,ol{padding-left:22px}li{margin:7px 0}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}.project{border:1px solid var(--line);border-radius:12px;padding:16px;background:#10182a}.project strong{display:block;color:white;margin-bottom:4px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.9rem}
+@media(max-width:720px){.grid,.two-col{grid-template-columns:1fr}.hero{padding:52px 0 34px}.section,.card{padding:19px}table{display:block;overflow-x:auto;white-space:nowrap}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><a class="brand" href="index.html">ALOK BUILDS<span style="color:var(--accent)">.</span></a>
+<nav class="navlinks"><a href="fpga-hardware.html">FPGA & Hardware</a><a href="ai-hft-hardware.html">AI & HFT Silicon</a><a href="https://alokbuilds99.github.io/">Home</a></nav></div></header>
+
+<section class="wrap hero">
+<div class="eyebrow">Semiconductors · AI · Finance · Architecture</div>
+<h1>The Hardware Behind AI and High-Frequency Trading</h1>
+<p class="lead">AI accelerators and HFT systems both depend on advanced silicon—but they solve different problems. AI emphasizes throughput and data movement. HFT often emphasizes latency, predictable timing and fast networking.</p>
+<div class="meta"><span class="pill">AI accelerators</span><span class="pill">FPGA</span><span class="pill">Memory systems</span><span class="pill">Networking</span></div>
+</section>
+<main class="wrap">
+<section class="section">
+<h2>1. Two workloads, two design priorities</h2>
+<div class="two-col">
+<div class="card"><span class="tag">AI</span><h3>Maximize throughput</h3><p>Perform huge numbers of mathematical operations—especially matrix multiplications—while keeping processors supplied with data.</p><ul><li>Parallel arithmetic</li><li>High memory bandwidth</li><li>Large compute clusters</li><li>Efficient power and cooling</li></ul></div>
+<div class="card"><span class="tag">HFT</span><h3>Minimize latency</h3><p>Receive market data, process it and send orders with very little delay and predictable timing.</p><ul><li>Short processing pipelines</li><li>Fast packet handling</li><li>Low-latency memory access</li><li>Precise time synchronization</li></ul></div>
+</div>
+</section>
+<section class="section">
+<h2>2. Hardware used in AI systems</h2>
+<div class="grid">
+<div class="card"><h3>GPU — Graphics Processing Unit</h3><p>GPUs contain many parallel processing units and are widely used for AI training and inference. Modern architectures include compute units, register files, caches and specialized matrix engines.</p><p class="muted">Examples of relevant concepts: CUDA cores, streaming multiprocessors and Tensor Cores in NVIDIA architectures.</p></div>
+<div class="card"><h3>TPU / NPU / AI ASIC</h3><p>Specialized accelerators are designed around the operations and dataflows common in machine learning. They may use systolic arrays, matrix engines and specialized data formats.</p></div>
+<div class="card"><h3>HBM — High Bandwidth Memory</h3><p>HBM stacks DRAM dies and connects them through a very wide interface near the processor package. It helps feed data-hungry accelerators with high bandwidth.</p></div>
+<div class="card"><h3>DDR memory</h3><p>System memory stores model data, application data and working sets. Memory controllers manage communication between processors and DRAM.</p></div>
+<div class="card"><h3>High-speed interconnects</h3><p>PCI Express and accelerator-specific links move data between CPUs, GPUs, memory and other devices. At scale, interconnect topology becomes a major system-design concern.</p></div>
+<div class="card"><h3>DPU / SmartNIC</h3><p>These devices offload networking, storage and infrastructure tasks from general-purpose CPUs, helping large data centres use resources efficiently.</p></div>
+</div>
+<div class="callout"><strong>The memory wall:</strong> A processor may be able to calculate faster than data can be delivered. Memory bandwidth, locality, caching and packaging are therefore central to AI hardware design.</div>
+</section>
+<section class="section">
+<h2>3. Hardware used in high-frequency trading</h2>
+<p>HFT firms process market data and manage orders under tight latency constraints. The exact architecture depends on the trading strategy, exchange interface, network topology and risk controls.</p>
+<div class="grid">
+<div class="card"><h3>FPGA</h3><p>An FPGA can implement a market-data pipeline in hardware: packet reception, parsing, filtering, order-book updates, rule evaluation and order generation. Multiple pipeline stages can operate concurrently.</p></div>
+<div class="card"><h3>SmartNIC / Network Interface</h3><p>Specialized network cards can accelerate packet processing, timestamping and data movement. The network interface and its driver/software stack both matter.</p></div>
+<div class="card"><h3>Low-latency CPU</h3><p>CPUs remain useful for strategy logic, orchestration, risk checks and tasks that benefit from flexible software. Cache behaviour and careful software engineering are important.</p></div>
+<div class="card"><h3>SRAM</h3><p>SRAM is fast and does not need refresh, making it useful for caches, buffers, lookup tables and on-chip FPGA memory. It is less dense and generally more expensive per bit than DRAM.</p></div>
+<div class="card"><h3>Precision timing</h3><p>Clocking and synchronization technologies help timestamp events and align systems. Timing accuracy is important for measurement, auditability and coordination.</p></div>
+<div class="card"><h3>Low-latency switches</h3><p>Network switches connect trading servers and exchange connectivity. Port speed, buffering, topology and configuration all influence end-to-end latency.</p></div>
+</div>
+<h3>A simplified FPGA trading pipeline</h3>
+<div class="diagram"><div class="node">Market data<br>Ethernet</div><span class="arrow">→</span><div class="node">Packet<br>parser</div><span class="arrow">→</span><div class="node">Book / state<br>update</div><span class="arrow">→</span><div class="node">Trading<br>rules</div><span class="arrow">→</span><div class="node">Order<br>transmit</div></div>
+<p class="muted">This is a conceptual architecture, not a complete deployable trading system. Real systems also need robust risk controls, exchange protocol compliance, monitoring and extensive testing.</p>
+</section>
+<section class="section">
+<h2>4. Other industries and their silicon</h2>
+<div class="grid">
+<div class="card"><h3>Automotive and autonomous driving</h3><p>Automotive SoCs, AI accelerators, radar processors, image signal processors, microcontrollers and safety controllers.</p></div>
+<div class="card"><h3>Telecommunications</h3><p>RF transceivers, DSPs, FPGAs, network processors and hardware for massive MIMO and baseband processing.</p></div>
+<div class="card"><h3>Cloud and data centres</h3><p>CPUs, GPUs, DPUs, memory controllers, PCIe switches, storage controllers and high-speed networking silicon.</p></div>
+<div class="card"><h3>Power electronics and energy</h3><p>IGBT, SiC and GaN power devices, gate drivers, ADCs, digital controllers and motor-control processors.</p></div>
+</div>
+</section>
+<section class="section">
+<h2>5. Where VLSI engineers fit in</h2>
+<table><thead><tr><th>Specialization</th><th>What engineers work on</th></tr></thead><tbody>
+<tr><td>RTL Design</td><td>Describe digital hardware using Verilog or SystemVerilog.</td></tr>
+<tr><td>Design Verification</td><td>Build test environments and verify that the design behaves correctly.</td></tr>
+<tr><td>Physical Design</td><td>Floorplanning, placement, clock-tree synthesis, routing and timing closure.</td></tr>
+<tr><td>Design for Test (DFT)</td><td>Add structures and methods that make manufactured chips testable.</td></tr>
+<tr><td>Memory Design</td><td>Design and integrate SRAM, DRAM-related circuits and memory interfaces.</td></tr>
+<tr><td>Analog / Mixed Signal</td><td>Design PLLs, ADCs, DACs, amplifiers and interfaces between analog and digital worlds.</td></tr>
+<tr><td>Packaging / Chiplets</td><td>Integrate dies, memory stacks and high-speed interconnects in advanced packages.</td></tr>
+<tr><td>FPGA Design</td><td>Prototype and implement configurable hardware systems.</td></tr>
+</tbody></table>
+</section>
+<section class="section">
+<h2>6. Companies and areas to explore</h2>
+<div class="grid">
+<div class="card"><h3>NVIDIA</h3><p>GPUs, AI accelerators, networking, SoCs and accelerated computing platforms.</p></div>
+<div class="card"><h3>AMD</h3><p>CPUs, GPUs, adaptive computing and FPGA technologies.</p></div>
+<div class="card"><h3>Broadcom</h3><p>Networking ASICs, connectivity and custom silicon.</p></div>
+<div class="card"><h3>Intel</h3><p>CPUs, accelerators, networking and semiconductor manufacturing.</p></div>
+<div class="card"><h3>Marvell</h3><p>Data infrastructure, networking and custom silicon.</p></div>
+</div>
+</section>
+<section class="section">
+<h2>7. A learning roadmap for aspiring chip designers</h2>
+<ol>
+<li><strong>Digital electronics:</strong> Boolean algebra, logic gates, multiplexers, flip-flops, counters and finite-state machines.</li>
+<li><strong>HDLs:</strong> Learn VHDL and Verilog; understand combinational and sequential logic.</li>
+<li><strong>SystemVerilog:</strong> Learn modern RTL design and verification concepts.</li>
+<li><strong>Computer architecture:</strong> Study CPUs, ALUs, pipelines, caches, SRAM, DRAM and memory hierarchy.</li>
+<li><strong>RTL design and verification:</strong> Build processors, controllers, memory interfaces and accelerators.</li>
+<li><strong>Physical design:</strong> Learn synthesis, static timing analysis, floorplanning, placement, clock-tree synthesis and routing.</li>
+<li><strong>Advanced architectures:</strong> Explore GPU design, HBM, chiplets, high-speed networking and FPGA acceleration.</li>
+</ol>
+</section>
+<section class="section">
+<h2>8. Portfolio projects worth building</h2>
+<div class="grid">
+<div class="project"><strong>8-bit RISC-style processor</strong><span class="muted">Learn CPU architecture, datapaths and control.</span></div>
+<div class="project"><strong>SRAM controller</strong><span class="muted">Explore memory interfaces and timing.</span></div>
+<div class="project"><strong>Pipelined MAC accelerator</strong><span class="muted">Understand arithmetic datapaths used in signal processing and AI.</span></div>
+<div class="project"><strong>FPGA Ethernet packet parser</strong><span class="muted">Learn packet processing and streaming pipelines.</span></div>
+<div class="project"><strong>UART / SPI controller</strong><span class="muted">Build practical peripheral interfaces.</span></div>
+</div>
+</section>
+<section class="section">
+<h2>Final thought</h2>
+<p>AI silicon and low-latency trading hardware are two examples of how workload requirements shape chip architecture. One pushes parallel compute and memory bandwidth; the other pushes fast, predictable data movement and processing.</p>
+<p>For a student entering VLSI, the best foundation is still digital logic, HDL, computer architecture, RTL design and verification. Those skills transfer across many semiconductor applications.</p>
+<p><a href="fpga-hardware.html">← Previous article: What can you build with an FPGA?</a></p>
+</section>
+</main>
+
+<footer><div class="wrap">© Alok Builds · Notes on chip design, technology, business and engineering.</div></footer>
+</body></html>
